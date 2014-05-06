@@ -1,0 +1,25 @@
+{
+  "name": "basicContext",
+  "version": "1.0.1",
+  "authors": [
+    "Tobias Reich <tobias.reich.ich@gmail.com>"
+  ],
+  "description": "Easy-to-use context-menu for your website or webapp",
+  "main": "dist/basicContext.min.js",
+  "keywords": [
+    "context",
+    "menu",
+    "popup",
+    "right-click"
+  ],
+  "license": "MIT",
+  "homepage": "http://github.com/electerious/basicContext",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "etc"
+  ]
+}
