@@ -27,6 +27,15 @@
 		margin-bottom: 2px;
 		cursor: pointer;
 
+		&.separator {
+			float: left;
+			width: 100%;
+			height: 1px;
+			background-color: rgba(0, 0, 0, .2);
+			margin: 4px 0px;
+			cursor: default;
+		}
+
 		&:last-child {
 			margin-bottom: 0px;
 		}

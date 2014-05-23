@@ -2,9 +2,15 @@ this.context =
 
 	_valid: (data) ->
 
-		if	not data?.title? and
-			not data.icon? and
-			not data.fn?
+		if	data?.type? and
+			data.type is 'separator'
+
+				return true
+
+		if	data?.type? and
+			data.title? and
+			data.icon? and
+			data.fn?
 
 				return true
 
@@ -14,8 +20,12 @@ this.context =
 
 		item = (row) ->
 
-			return '' if not context._valid data
-			return "<tr><td data-name='#{ row.title }'><span class='#{ row.icon }'></span>#{ row.title }</td></tr>"
+			return '' if not context._valid row
+
+			switch row.type
+
+				when 'item' then return "<tr><td data-name='#{ row.title }'><span class='#{ row.icon }'></span>#{ row.title }</td></tr>"
+				when 'separator' then return "<tr class='separator'></tr>"
 
 		"""
 		<div class='contextContainer'>

@@ -27,8 +27,9 @@ Show a context-menu by using the following command:
 ```coffee
 items = [
 	{ type: 'item', title: 'Add Sites', icon: 'ion-plus-round', fn: -> settings.addSites() }
-	{ type: 'item', title: 'Reset Login', icon: 'ion-person', fn: -> login.reset() }
+	{ type: 'item', title: 'Reset Login', icon: 'ion-person', fn: -> login.reset() }	
 	{ type: 'item', title: 'Help', icon: 'ion-help-buoy', fn: -> settings.help() }
+	{ type: 'separator' }
 	{ type: 'item', title: 'Logout', icon: 'ion-log-out', fn: -> ackee.logout() }
 ]
 
