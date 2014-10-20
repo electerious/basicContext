@@ -8,6 +8,7 @@ this.context =
 			# Set defaults
 			###
 
+			if not data.class? then		data.class = ''
 			if not data.type? then		data.type = 'item'
 			if not data.icon? then		data.type = ''
 			if not data.title? then		data.tite = 'Undefined'
@@ -31,7 +32,7 @@ this.context =
 
 		"""
 		<div class='contextContainer'>
-			<div class='context'>
+			<div class='context #{ data.class }'>
 				<table>
 					<tbody>
 						#{ (item row for row in data).join '' }
@@ -124,6 +125,9 @@ this.context =
 
 		# Bind click on items
 		context._bind row for row in data
+
+		# Call callback
+		callback() if data.callback?
 
 		return true
 
