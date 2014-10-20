@@ -2,17 +2,19 @@ this.context =
 
 	_valid: (data) ->
 
-		if	data?.type? and
-			data.type is 'separator'
+		if data?
 
-				return true
+			###
+			# Set defaults
+			###
 
-		if	data?.type? and
-			data.title? and
-			data.icon? and
-			data.fn?
+			if not data.type? then		data.type = 'item'
+			if not data.icon? then		data.type = ''
+			if not data.title? then		data.tite = 'Undefined'
 
-				return true
+			if not data.fn? then 		return false
+
+			return true
 
 		return false
 
