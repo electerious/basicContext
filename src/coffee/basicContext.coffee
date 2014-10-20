@@ -39,10 +39,32 @@ this.context =
 		</div>
 		"""
 
+	_normalizeEvent: (e) ->
+
+		###
+		# The event 'touchend' does not return the touch position.
+		# We need to capture pageX and pageY from original event.
+		###
+
+		if	e? and
+			e.type is 'touchend' and
+			not (e.pageX? or e.pageY?)
+
+				touches = e.originalEvent.changedTouches
+
+				if touches.length > 0
+					e.pageX = touches[0].pageX
+					e.pageY = touches[0].pageY
+
+		return e
+
 	_getPosition: (e) ->
 
-		x		= e.pageX
-		y		= e.pageY - $(document).scrollTop()
+		e = context._normalizeEvent e
+
+		x = e.pageX
+		y = e.pageY - $(document).scrollTop()
+
 		browser =
 			width:	$('html').width()
 			height:	$('html').height()
@@ -60,11 +82,11 @@ this.context =
 			y: y
 		}
 
+	_bind: (row) ->
+
+		$(".contextContainer td[data-name='#{ row.title }']").click row.fn
+
 	show: (data, e, fnClose) ->
-
-		onClick = (row) ->
-
-			$(".contextContainer td[data-name='#{ row.title }']").click row.fn
 
 		# Build context
 		$('body').append context._build(data)
@@ -99,7 +121,7 @@ this.context =
 		$('.contextContainer').click context.close if not fnClose?
 
 		# Bind click on items
-		onClick row for row in data
+		context._bind row for row in data
 
 		return true
 
