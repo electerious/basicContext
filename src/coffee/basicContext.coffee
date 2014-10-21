@@ -10,8 +10,8 @@ this.context =
 
 			if not data.class? then		data.class = ''
 			if not data.type? then		data.type = 'item'
-			if not data.icon? then		data.type = ''
-			if not data.title? then		data.tite = 'Undefined'
+			if not data.icon? then		data.icon = ''
+			if not data.title? then		data.title = 'Undefined'
 
 			if	not data.fn? and
 				data.type isnt 'separator'
