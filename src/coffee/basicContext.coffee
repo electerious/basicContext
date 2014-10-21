@@ -13,7 +13,11 @@ this.context =
 			if not data.icon? then		data.type = ''
 			if not data.title? then		data.tite = 'Undefined'
 
-			if not data.fn? then 		return false
+			if	not data.fn? and
+				data.type isnt 'separator'
+
+					console.warn "Missing fn for item '#{ data.title }'"
+					return false
 
 			return true
 
