@@ -29,9 +29,12 @@ this.context =
 
 			return '' if not context._valid row
 
+			span = "<span class='#{ row.icon }'></span>"
+			span = '' if row.icon is ''
+
 			switch row.type
 
-				when 'item' then return "<tr><td data-name='#{ row.title }'><span class='#{ row.icon }'></span>#{ row.title }</td></tr>"
+				when 'item' then return "<tr><td data-name='#{ row.title }'>#{ span }#{ row.title }</td></tr>"
 				when 'separator' then return "<tr class='separator'></tr>"
 
 		"""
