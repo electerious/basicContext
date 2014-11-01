@@ -34,7 +34,7 @@ this.context =
 
 			switch row.type
 
-				when 'item' then return "<tr class='#{ data.class }'><td data-name='#{ encodeURI(row.title) }'>#{ span }#{ row.title }</td></tr>"
+				when 'item' then return "<tr class='#{ row.class }'><td data-name='#{ encodeURI(row.title) }'>#{ span }#{ row.title }</td></tr>"
 				when 'separator' then return "<tr class='separator'></tr>"
 
 		"""
