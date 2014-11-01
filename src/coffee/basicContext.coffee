@@ -34,12 +34,12 @@ this.context =
 
 			switch row.type
 
-				when 'item' then return "<tr><td data-name='#{ row.title }'>#{ span }#{ row.title }</td></tr>"
+				when 'item' then return "<tr class='#{ data.class }'><td data-name='#{ encodeURI(row.title) }'>#{ span }#{ row.title }</td></tr>"
 				when 'separator' then return "<tr class='separator'></tr>"
 
 		"""
 		<div class='contextContainer'>
-			<div class='context #{ data.class }'>
+			<div class='context'>
 				<table>
 					<tbody>
 						#{ (item row for row in data).join '' }
@@ -94,7 +94,7 @@ this.context =
 
 	_bind: (row) ->
 
-		$(".contextContainer td[data-name='#{ row.title }']").click row.fn
+		$(".contextContainer td[data-name='#{ encodeURI(row.title) }']").click row.fn
 
 	show: (data, e, fnClose) ->
 
