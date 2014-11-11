@@ -133,6 +133,9 @@ this.context =
 		# Bind click on items
 		context._bind row for row in data
 
+		# Do not trigger the default action of the event
+		e.preventDefault()
+
 		# Call callback
 		callback() if data.callback?
 
