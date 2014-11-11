@@ -66,6 +66,8 @@ this.context =
 					e.pageX = touches[0].pageX
 					e.pageY = touches[0].pageY
 
+				e.preventDefault()
+
 		return e
 
 	_getPosition: (e) ->
