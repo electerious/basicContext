@@ -2,8 +2,8 @@ this.basicContext =
 
 	_dom: (elem) ->
 
-		if not elem? then return $('.context')
-		else return $('.context').find("#{ elem }")
+		if not elem? then return $('.basicContext')
+		else return $('.basicContext').find("#{ elem }")
 
 	_valid: (data) ->
 
@@ -34,6 +34,7 @@ this.basicContext =
 
 			return '' if not basicContext._valid row
 
+			# Generate span/icon-element
 			span = "<span class='#{ row.icon }'></span>"
 			span = '' if row.icon is ''
 
@@ -43,8 +44,8 @@ this.basicContext =
 				when 'separator' then return "<tr class='separator'></tr>"
 
 		"""
-		<div class='contextContainer'>
-			<div class='context'>
+		<div class='basicContextContainer'>
+			<div class='basicContext'>
 				<table>
 					<tbody>
 						#{ (item row for row in data).join '' }
@@ -89,8 +90,8 @@ this.basicContext =
 		y = 0 if not y? or y < 0
 
 		# Never leave the screen
-		x = browser.width if x > browser.width
-		y = browser.height if y > browser.height
+		x = browser.width	if x > browser.width
+		y = browser.height	if y > browser.height
 
 		return {
 			x: x
