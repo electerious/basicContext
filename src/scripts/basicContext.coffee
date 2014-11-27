@@ -106,6 +106,8 @@ this.basicContext =
 
 		# Build context
 		$('body').append basicContext._build(data)
+
+		# Block scrolling of site
 		$('body').css	'overflow', 'hidden'
 
 		# Get info to calculate position
@@ -154,6 +156,10 @@ this.basicContext =
 
 	close: ->
 
+		# Remove context
 		basicContext._dom().parent().remove()
+
+		# Reactivate scrolling of site
 		$('body').css 'overflow', 'scroll'
+
 		return true
