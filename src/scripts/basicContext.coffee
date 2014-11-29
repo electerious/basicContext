@@ -1,5 +1,7 @@
 this.basicContext =
 
+	_overflow: null
+
 	_dom: (elem) ->
 
 		if not elem? then return $('.basicContext')
@@ -107,8 +109,10 @@ this.basicContext =
 		# Build context
 		$('body').append basicContext._build(data)
 
-		# Block scrolling of site
-		$('body').css	'overflow', 'hidden'
+		# Save current overflow and block scrolling of site
+		if not basicContext._overflow?
+			basicContext._overflow = $('body').css 'overflow'
+			$('body').css 'overflow', 'hidden'
 
 		# Get info to calculate position
 		mousePosition	= basicContext._getPosition(e)
@@ -159,7 +163,9 @@ this.basicContext =
 		# Remove context
 		basicContext._dom().parent().remove()
 
-		# Reactivate scrolling of site
-		$('body').css 'overflow', 'scroll'
+		# Reset overflow to its original value
+		if basicContext._overflow?
+			$('body').css 'overflow', basicContext._overflow
+			basicContext._overflow = null
 
 		return true
