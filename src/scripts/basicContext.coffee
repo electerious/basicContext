@@ -1,4 +1,11 @@
-this.context =
+this.basicContext =
+
+	_overflow: null
+
+	_dom: (elem) ->
+
+		if not elem? then return $('.basicContext')
+		else return $('.basicContext').find("#{ elem }")
 
 	_valid: (data) ->
 
@@ -27,8 +34,9 @@ this.context =
 
 		item = (row) ->
 
-			return '' if not context._valid row
+			return '' if not basicContext._valid row
 
+			# Generate span/icon-element
 			span = "<span class='#{ row.icon }'></span>"
 			span = '' if row.icon is ''
 
@@ -38,8 +46,8 @@ this.context =
 				when 'separator' then return "<tr class='separator'></tr>"
 
 		"""
-		<div class='contextContainer'>
-			<div class='context'>
+		<div class='basicContextContainer'>
+			<div class='basicContext'>
 				<table>
 					<tbody>
 						#{ (item row for row in data).join '' }
@@ -70,7 +78,7 @@ this.context =
 
 	_getPosition: (e) ->
 
-		e = context._normalizeEvent e
+		e = basicContext._normalizeEvent e
 
 		x = e.pageX
 		y = e.pageY - $(document).scrollTop()
@@ -84,8 +92,8 @@ this.context =
 		y = 0 if not y? or y < 0
 
 		# Never leave the screen
-		x = browser.width if x > browser.width
-		y = browser.height if y > browser.height
+		x = browser.width	if x > browser.width
+		y = browser.height	if y > browser.height
 
 		return {
 			x: x
@@ -94,19 +102,23 @@ this.context =
 
 	_bind: (row) ->
 
-		$(".contextContainer td[data-name='#{ encodeURI(row.title) }']").click row.fn
+		basicContext._dom("td[data-name='#{ encodeURI(row.title) }']").click row.fn
 
 	show: (data, e, fnClose) ->
 
 		# Build context
-		$('body').append context._build(data)
-		$('body').css	'overflow', 'hidden'
+		$('body').append basicContext._build(data)
+
+		# Save current overflow and block scrolling of site
+		if not basicContext._overflow?
+			basicContext._overflow = $('body').css 'overflow'
+			$('body').css 'overflow', 'hidden'
 
 		# Get info to calculate position
-		mousePosition	= context._getPosition(e)
+		mousePosition	= basicContext._getPosition(e)
 		contextSize		=
-			width:	$('.contextContainer .context').outerWidth true
-			height:	$('.contextContainer .context').outerHeight true
+			width:	basicContext._dom().outerWidth true
+			height:	basicContext._dom().outerHeight true
 		browserSize		=
 			width:	$('html').width()
 			height:	$('html').height()
@@ -118,20 +130,20 @@ this.context =
 			mousePosition.y -= (mousePosition.y + contextSize.height) - browserSize.height
 
 		# Set position
-		$('.contextContainer .context').css
+		basicContext._dom().css
 			top:		"#{ mousePosition.y }px"
 			left:		"#{ mousePosition.x }px"
 			opacity:	1
 
 		# Close fallback
-		fnClose = context.close if not fnClose?
+		fnClose = basicContext.close if not fnClose?
 
 		# Bind click on background
-		$('.contextContainer').click fnClose if fnClose?
-		$('.contextContainer').click context.close if not fnClose?
+		basicContext._dom().parent().click fnClose				if fnClose?
+		basicContext._dom().parent().click basicContext.close	if not fnClose?
 
 		# Bind click on items
-		context._bind row for row in data
+		basicContext._bind row for row in data
 
 		# Do not trigger the default action of the event
 		e.preventDefault()
@@ -141,8 +153,19 @@ this.context =
 
 		return true
 
+	visible: ->
+
+		if basicContext._dom().length is 0 then return false
+		return true
+
 	close: ->
 
-		$('.contextContainer').remove()
-		$('body').css 'overflow', 'scroll'
+		# Remove context
+		basicContext._dom().parent().remove()
+
+		# Reset overflow to its original value
+		if basicContext._overflow?
+			$('body').css 'overflow', basicContext._overflow
+			basicContext._overflow = null
+
 		return true
