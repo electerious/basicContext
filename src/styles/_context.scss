@@ -9,6 +9,11 @@
 	opacity: 0;
 	transition: opacity .1s;
 
+	&--scrollable {
+		height: calc(100% - 6px * 2);
+		overflow-y: scroll;
+	}
+
 	/* Item ------------------------------------------------*/
 	tr {
 		margin-bottom: 2px;

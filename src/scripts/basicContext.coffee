@@ -83,7 +83,7 @@ this.basicContext =
 		x = e.pageX
 		y = e.pageY - $(document).scrollTop()
 
-		browser =
+		browserSize =
 			width:	$('html').width()
 			height:	$('html').height()
 
@@ -92,8 +92,23 @@ this.basicContext =
 		y = 0 if not y? or y < 0
 
 		# Never leave the screen
-		x = browser.width	if x > browser.width
-		y = browser.height	if y > browser.height
+		x = browserSize.width	if x > browserSize.width
+		y = browserSize.height	if y > browserSize.height
+
+		# Get size of context
+		contextSize	=
+			width:	basicContext._dom().outerWidth true
+			height:	basicContext._dom().outerHeight true
+
+		# Fixed position based on contextSize
+		if (x + contextSize.width) > browserSize.width		then x -= contextSize.width
+		if (y + contextSize.height) > browserSize.height	then y -= (y + contextSize.height) - browserSize.height
+
+		# Make context scrollable and start at the top of the browser
+		# when context is higher than the browser
+		if contextSize.height > browserSize.height
+			y = 0
+			basicContext._dom().addClass 'basicContext--scrollable'
 
 		return {
 			x: x
@@ -104,7 +119,7 @@ this.basicContext =
 
 		basicContext._dom("td[data-name='#{ encodeURI(row.title) }']").click row.fn
 
-	show: (data, e, fnClose) ->
+	show: (data, e, fnClose, fnCallback) ->
 
 		# Build context
 		$('body').append basicContext._build(data)
@@ -114,33 +129,20 @@ this.basicContext =
 			basicContext._overflow = $('body').css 'overflow'
 			$('body').css 'overflow', 'hidden'
 
-		# Get info to calculate position
-		mousePosition	= basicContext._getPosition(e)
-		contextSize		=
-			width:	basicContext._dom().outerWidth true
-			height:	basicContext._dom().outerHeight true
-		browserSize		=
-			width:	$('html').width()
-			height:	$('html').height()
-
 		# Calculate position
-		if (mousePosition.x + contextSize.width) > browserSize.width
-			mousePosition.x -= contextSize.width
-		if (mousePosition.y + contextSize.height) > browserSize.height
-			mousePosition.y -= (mousePosition.y + contextSize.height) - browserSize.height
+		position = basicContext._getPosition(e)
 
-		# Set position
+		# Set position and show context
 		basicContext._dom().css
-			top:		"#{ mousePosition.y }px"
-			left:		"#{ mousePosition.x }px"
+			top:		"#{ position.y }px"
+			left:		"#{ position.x }px"
 			opacity:	1
 
-		# Close fallback
+		# Close fn fallback
 		fnClose = basicContext.close if not fnClose?
 
 		# Bind click on background
-		basicContext._dom().parent().click fnClose				if fnClose?
-		basicContext._dom().parent().click basicContext.close	if not fnClose?
+		basicContext._dom().parent().click fnClose
 
 		# Bind click on items
 		basicContext._bind row for row in data
@@ -149,7 +151,7 @@ this.basicContext =
 		e.preventDefault()
 
 		# Call callback
-		callback() if data.callback?
+		fnCallback() if fnCallback?
 
 		return true
 
