@@ -32,9 +32,14 @@ this.basicContext =
 
 	_build: (data) ->
 
+		num = 0
+
 		item = (row) ->
 
 			return '' if not basicContext._valid row
+
+			# Give item a unique number
+			row.num = num++
 
 			# Generate span/icon-element
 			span = "<span class='#{ row.icon }'></span>"
@@ -42,8 +47,8 @@ this.basicContext =
 
 			switch row.type
 
-				when 'item' then return "<tr class='#{ row.class }'><td data-name='#{ encodeURI(row.title) }'>#{ span }#{ row.title }</td></tr>"
-				when 'separator' then return "<tr class='separator'></tr>"
+				when 'item' then		return "<tr class='#{ row.class }'><td data-num='#{ row.num }'>#{ span }#{ row.title }</td></tr>"
+				when 'separator' then	return "<tr class='separator'></tr>"
 
 		"""
 		<div class='basicContextContainer'>
@@ -117,7 +122,7 @@ this.basicContext =
 
 	_bind: (row) ->
 
-		basicContext._dom("td[data-name='#{ encodeURI(row.title) }']").click row.fn
+		basicContext._dom("td[data-num='#{ row.num }']").click row.fn
 
 	show: (data, e, fnClose, fnCallback) ->
 
