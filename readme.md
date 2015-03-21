@@ -33,5 +33,5 @@ items = [
 	{ type: 'item', title: 'Logout', icon: 'ion-log-out', fn: -> ackee.logout() }
 ]
 
-context.show items, e
+basicContext.show items, e
 ```
