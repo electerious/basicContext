@@ -8,6 +8,9 @@
 	border-radius: 3px;
 	opacity: 0;
 	transition: opacity .1s;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
 
 	&--scrollable {
 		height: calc(100% - 6px * 2);
