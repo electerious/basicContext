@@ -1,6 +1,6 @@
 # basicContext
 
-Easy-to-use context-menu for your website or webapp.
+Easy-to-use context-menu for your website or webapp. [Try it live on CodePen](http://codepen.io/electerious/pen/emaJxE).
 
 ![Context Screenshot](http://l.electerious.com/uploads/big/9f182a325203b158e59ad48aaebb13a2.png)
 
@@ -24,14 +24,14 @@ Simply include the following files in your HTML:
 
 Show a context-menu by using the following command:
 
-```coffee
-items = [
-	{ type: 'item', title: 'Add Sites', icon: 'ion-plus-round', fn: -> settings.addSites() }
-	{ type: 'item', title: 'Reset Login', icon: 'ion-person', fn: -> login.reset() }	
-	{ type: 'item', title: 'Help', icon: 'ion-help-buoy', fn: -> settings.help() }
-	{ type: 'separator' }
-	{ type: 'item', title: 'Logout', icon: 'ion-log-out', fn: -> ackee.logout() }
+```js
+var items = [
+	{ type: 'item', title: 'Add Sites', icon: 'ion-plus-round', fn: function() {} },
+	{ type: 'item', title: 'Reset Login', icon: 'ion-person', fn: function() {} },
+	{ type: 'item', title: 'Help', icon: 'ion-help-buoy', fn: function() {} },
+	{ type: 'separator' },
+	{ type: 'item', title: 'Logout', icon: 'ion-log-out', fn: function() {} }
 ]
 
-basicContext.show items, e
+basicContext.show(items, e)
 ```
