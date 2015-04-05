@@ -12,6 +12,9 @@
 	-webkit-user-select: none;
 	user-select: none;
 
+	box-sizing: content-box;
+	* { box-sizing: content-box; }
+
 	&--scrollable {
 		height: calc(100% - 6px * 2);
 		overflow-y: auto;
@@ -24,10 +27,10 @@
 
 		&.separator {
 			float: left;
+			margin: 4px 0;
 			width: 100%;
 			height: 1px;
 			background-color: rgba(0, 0, 0, .1);
-			margin: 4px 0;
 			cursor: default;
 		}
 
@@ -37,9 +40,10 @@
 	}
 
 	tr td {
-		color: #333;
-		min-width: 110px;
 		padding: 6px 8px;
+		min-width: 110px;
+		color: #333;
+		text-align: left;
 		border-radius: 2px;
 		white-space: nowrap;
 
