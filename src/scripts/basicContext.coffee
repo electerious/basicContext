@@ -89,8 +89,8 @@ this.basicContext =
 		y = e.pageY - $(document).scrollTop()
 
 		browserSize =
-			width:	$('html').width()
-			height:	$('html').height()
+			width:	$(window).width()
+			height:	$(window).height()
 
 		# Position unknown
 		x = 0 if not x? or x < 0

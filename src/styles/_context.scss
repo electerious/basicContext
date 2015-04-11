@@ -17,6 +17,7 @@
 
 	&--scrollable {
 		height: calc(100% - 6px * 2);
+		-webkit-overflow-scrolling: touch;
 		overflow-y: auto;
 	}
 
