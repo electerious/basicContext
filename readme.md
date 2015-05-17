@@ -9,15 +9,15 @@ Easy-to-use context-menu for your website or webapp.
 | Name | Description | Link |
 |:-----------|:------------|:------------|
 | Basic demo | basicContext works with all kind of events | [Try it on CodePen](http://codepen.io/electerious/pen/emaJxE) |
-| Position demo | basicContext never leaves the visible screen-area | [Try it on CodePen](http://codepen.io/electerious/pen/emaJxE) |
+| Position demo | basicContext never leaves the visible screen-area | [Try it on CodePen](http://codepen.io/electerious/pen/GJqrZN) |
 | Scroll demo | basicContext is scrollable when the context height is bigger than the browser height | [Try it on CodePen](http://codepen.io/electerious/pen/aOZpZr) |
 
 ## Features
 
 - Works in all modern browsers
 - Written in Vanilla JS
+- Stays within the viewport and never opens outside the visible screen-area ([Demo](http://codepen.io/electerious/pen/GJqrZN))
 - Scrollable, when the height of the context-menu is bigger than the height of the browser ([Demo](http://codepen.io/electerious/pen/emaJxE))
-- Stays within the viewport and never opens outside the visible screen-area ([Demo](http://codepen.io/electerious/pen/aOZpZr))
 
 ## Requirements
 
