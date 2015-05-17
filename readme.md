@@ -17,7 +17,7 @@ Easy-to-use context-menu for your website or webapp.
 - Works in all modern browsers
 - Written in Vanilla JS
 - Stays within the viewport and never opens outside the visible screen-area ([Demo](http://codepen.io/electerious/pen/GJqrZN))
-- Scrollable, when the height of the context-menu is bigger than the height of the browser ([Demo](http://codepen.io/electerious/pen/emaJxE))
+- Scrollable, when the height of the context-menu is bigger than the height of the browser ([Demo](http://codepen.io/electerious/pen/aOZpZr))
 
 ## Requirements
 
