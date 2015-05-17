@@ -1,16 +1,32 @@
 # basicContext
 
-Easy-to-use context-menu for your website or webapp. [Try it live on CodePen](http://codepen.io/electerious/pen/emaJxE).
+Easy-to-use context-menu for your website or webapp.
 
 ![Context Screenshot](http://l.electerious.com/uploads/big/9f182a325203b158e59ad48aaebb13a2.png)
+
+## Demos
+
+| Name | Description | Link |
+|:-----------|:------------|:------------|
+| Basic demo | basicContext works with all kind of events | [Try it on CodePen](http://codepen.io/electerious/pen/emaJxE) |
+| Position demo | basicContext never leaves the visible screen-area | [Try it on CodePen](http://codepen.io/electerious/pen/emaJxE) |
+| Scroll demo | basicContext is scrollable when the context height is bigger than the browser height | [Try it on CodePen](http://codepen.io/electerious/pen/aOZpZr) |
+
+## Features
+
+- Works in all modern browsers
+- Written in Vanilla JS
+- Scrollable, when the height of the context-menu is bigger than the height of the browser ([Demo](http://codepen.io/electerious/pen/emaJxE))
+- Stays within the viewport and never opens outside the visible screen-area ([Demo](http://codepen.io/electerious/pen/aOZpZr))
+
+## Requirements
+
+basicContext is written in Vanilla JS and has no dependencies.
+
 
 ## Installation
 
 	bower install basicContext
-	
-## Requirements
-
-basicContext requires jQuery >= 2.1.0
 	
 ## How to use
 
@@ -18,7 +34,6 @@ Simply include the following files in your HTML:
 
 ```html
 <link type="text/css" rel="stylesheet" href="bower_components/basicContext/dist/basicContext.min.css">
-<script async type="text/javascript" src="bower_components/jQuery/dist/jquery.min.js"></script>
 <script async type="text/javascript" src="bower_components/basicContext/dist/basicContext.min.js"></script>
 ```
 
