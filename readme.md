@@ -21,8 +21,11 @@ Easy-to-use context-menu for your website or webapp.
 
 ## Requirements
 
-basicContext is written in Vanilla JS and has no dependencies.
+basicContext is written in Vanilla JS and only dependents on the following browser APIs:
 
+- [classList](http://caniuse.com/#feat=classlist)
+
+All of these APIs are capable of being polyfilled in older browser. Check the linked resources above to determine if you must polyfill to achieve your desired level of browser support.
 
 ## Installation
 
