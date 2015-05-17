@@ -10,7 +10,7 @@ Easy-to-use context-menu for your website or webapp. [Try it live on CodePen](ht
 	
 ## Requirements
 
-basicContext requires jQuery >= 2.1.0
+basicContext is written in Vanilla JS and has no dependencies.
 	
 ## How to use
 
@@ -18,7 +18,6 @@ Simply include the following files in your HTML:
 
 ```html
 <link type="text/css" rel="stylesheet" href="bower_components/basicContext/dist/basicContext.min.css">
-<script async type="text/javascript" src="bower_components/jQuery/dist/jquery.min.js"></script>
 <script async type="text/javascript" src="bower_components/basicContext/dist/basicContext.min.js"></script>
 ```
 
