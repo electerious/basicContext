@@ -1,6 +1,6 @@
 # basicContext
 
-Easy-to-use context-menu for your website or webapp.
+Easy-to-use context-menu for your website or web-app.
 
 ![Context Screenshot](http://l.electerious.com/uploads/big/9f182a325203b158e59ad48aaebb13a2.png)
 
@@ -11,6 +11,7 @@ Easy-to-use context-menu for your website or webapp.
 | Basic demo | basicContext works with all kind of events | [Try it on CodePen](http://codepen.io/electerious/pen/emaJxE) |
 | Position demo | basicContext never leaves the visible screen-area | [Try it on CodePen](http://codepen.io/electerious/pen/GJqrZN) |
 | Scroll demo | basicContext is scrollable when the context height is bigger than the browser height | [Try it on CodePen](http://codepen.io/electerious/pen/aOZpZr) |
+| Custom close function demo | basicContext lets you define a custom close function | [Try it on CodePen](http://codepen.io/electerious/pen/MwpVdE) |
 
 ## Features
 
@@ -29,15 +30,16 @@ All of these APIs are capable of being polyfilled in older browser. Check the li
 
 ## Installation
 
-	bower install basicContext
+	bower install basicContext --save
+	npm install basiccontext --save
 	
 ## How to use
 
 Simply include the following files in your HTML:
 
 ```html
-<link type="text/css" rel="stylesheet" href="bower_components/basicContext/dist/basicContext.min.css">
-<script async type="text/javascript" src="bower_components/basicContext/dist/basicContext.min.js"></script>
+<link type="text/css" rel="stylesheet" href="dist/basicContext.min.css">
+<script async type="text/javascript" src="dist/basicContext.min.js"></script>
 ```
 
 Show a context-menu by using the following command:
