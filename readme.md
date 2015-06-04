@@ -32,16 +32,16 @@ All of these APIs are capable of being polyfilled in older browser. Check the li
 
 We recommend to install basicContext using [Bower](http://bower.io/) or [npm](https://npmjs.com).
 
-	bower install basicContext --save
-	npm install basiccontext --save
+	bower install basicContext
+	npm install basiccontext
 	
 ## How to use
 
-Simply include the following files in your HTML:
+Include the CSS file in the `head` and the JS file at the end of your `body`:
 
 ```html
-<link type="text/css" rel="stylesheet" href="dist/basicContext.min.css">
-<script async type="text/javascript" src="dist/basicContext.min.js"></script>
+<link rel="stylesheet" href="dist/basicContext.min.css">
+<script src="dist/basicContext.min.js"></script>
 ```
 
 Show a context-menu by using the following command:
