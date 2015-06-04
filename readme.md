@@ -30,6 +30,8 @@ All of these APIs are capable of being polyfilled in older browser. Check the li
 
 ## Installation
 
+We recommend to install basicContext using [Bower](http://bower.io/) or [npm](https://npmjs.com).
+
 	bower install basicContext --save
 	npm install basiccontext --save
 	
