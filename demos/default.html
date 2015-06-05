@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+	<meta charset="utf-8">
+	<title>basicContext Demo</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+	<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<link rel="stylesheet" href="../dist/basicContext.min.css">
+
+	<style>
+
+		html {
+			width: 100%;
+			height: 100%;
+		}
+
+		body {
+			text-align: center;
+			min-height: 100%;
+			font-size: 14px;
+		}
+
+		a {
+			display: inline-block;
+			margin: 50px 0;
+			padding: 6px 10px;
+			background: #CA5858;
+			color: #fff;
+			text-decoration: none;
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+	</style>
+
+	<a href="#" class="click">Click me!</a>
+
+	<a href="#" class="context">Right-Click me!</a>
+
+	<a href="#" class="touchend">Touch me! (mobile only)</a>
+
+	<script src="../dist/basicContext.min.js"></script>
+
+	<script>
+
+		var onClick = function(e) {
+
+			var clicked = function() { alert('Item clicked!') }
+
+			var items = [
+				{ type: 'item', title: 'Add Sites', icon: 'ion-plus-round', fn: clicked },
+				{ type: 'item', title: 'Reset Login', icon: 'ion-person', fn: clicked },
+				{ type: 'item', title: 'Help', icon: 'ion-help-buoy', fn: clicked },
+				{ type: 'separator' },
+				{ type: 'item', title: 'Logout', icon: 'ion-log-out', fn: clicked }
+			]
+
+			basicContext.show(items, e)
+
+		}
+
+		document.addEventListener('DOMContentLoaded', function() {
+
+			document.querySelector('a.click').addEventListener('click', onClick)
+			document.querySelector('a.context').addEventListener('contextmenu', onClick)
+			document.querySelector('a.touchend').addEventListener('touchend', onClick)
+
+		})
+
+	</script>
+
+</html>
