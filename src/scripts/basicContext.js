@@ -189,7 +189,7 @@ window.basicContext = {
 		if (fnCallback!=null) fnCallback()
 
 		// Do not trigger default event
-		e.preventDefault()
+		if (typeof e.preventDefault === 'function') e.preventDefault()
 
 		return true
 
