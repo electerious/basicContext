@@ -197,7 +197,9 @@ window.basicContext = {
 
 	visible() {
 
-		if (basicContext._dom().length===0)	return false
+		var elem = basicContext._dom()
+
+		if (elem==null||elem.length===0)	return false
 		else								return true
 
 	},
