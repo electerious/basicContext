@@ -15,12 +15,6 @@
 	box-sizing: content-box;
 	* { box-sizing: content-box; }
 
-	&--scrollable {
-		height: calc(100% - 6px * 2);
-		-webkit-overflow-scrolling: touch;
-		overflow-y: auto;
-	}
-
 	/* Item ------------------------------------------------*/
 	tr {
 		margin-bottom: 2px;
@@ -59,6 +53,17 @@
 		margin-right: 10px;
 		width: 12px;
 		text-align: center;
+	}
+
+	/* Scrollable ------------------------------------------------*/
+	&--scrollable {
+		height: calc(100% - 6px * 2);
+		-webkit-overflow-scrolling: touch;
+		overflow-y: auto;
+	}
+
+	&--scrollable tr td {
+		min-width: 130px;
 	}
 
 }
