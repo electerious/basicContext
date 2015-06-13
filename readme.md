@@ -12,6 +12,7 @@ Easy-to-use context-menu for your website or web-app.
 | Position demo | basicContext never leaves the visible screen-area | [Try it on CodePen](http://codepen.io/electerious/pen/GJqrZN) |
 | Scroll demo | basicContext is scrollable when the context height is bigger than the browser height | [Try it on CodePen](http://codepen.io/electerious/pen/aOZpZr) |
 | Custom close function demo | basicContext lets you define a custom close function | [Try it on CodePen](http://codepen.io/electerious/pen/MwpVdE) |
+| Custom position demo | basicContext accepts an object with custom coordinates | [Try it on CodePen](http://codepen.io/electerious/pen/PqjMrN) |
 
 ## Features
 
