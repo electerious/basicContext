@@ -10,10 +10,10 @@ window.basicContext = {
 
 	_valid(data = {}) {
 
-		if (data.class==null)	data.class = ''
-		if (data.type==null)	data.type = 'item'
-		if (data.icon==null)	data.icon = null
-		if (data.title==null)	data.title = 'Undefined'
+		if (data.class==null) data.class = ''
+		if (data.type==null)  data.type  = 'item'
+		if (data.icon==null)  data.icon  = null
+		if (data.title==null) data.title = 'Undefined'
 
 		if (data.fn==null && data.type!== 'separator') {
 
@@ -28,14 +28,14 @@ window.basicContext = {
 
 	_build(data) {
 
-		var num		= 0,
-			context	= '',
-			item
+		var num     = 0,
+		    context = '',
+		    item
 
 		item = function(row) {
 
 			var html = '',
-				span = ''
+			    span = ''
 
 			// Parse and validate data
 			if (basicContext._valid(row)===false) return ''
@@ -49,17 +49,17 @@ window.basicContext = {
 			// Generate item
 			if (row.type==='item') {
 
-				html =	`
-						<tr class='${ row.class }'>
-							<td data-num='${ row.num }'>${ span }${ row.title }</td>
-						</tr>
-						`
+				html = `
+				       <tr class='${ row.class }'>
+				           <td data-num='${ row.num }'>${ span }${ row.title }</td>
+				       </tr>
+				       `
 
 			} else if (row.type==='separator') {
 
-				html =	`
-						<tr class='separator'></tr>
-						`
+				html = `
+				       <tr class='separator'></tr>
+				       `
 
 			}
 
@@ -67,21 +67,21 @@ window.basicContext = {
 
 		}
 
-		context +=	`
-					<div class='basicContextContainer'>
-						<div class='basicContext'>
-							<table>
-								<tbody>
-					`
+		context += `
+		           <div class='basicContextContainer'>
+		               <div class='basicContext'>
+		                   <table>
+		                       <tbody>
+		           `
 
 		for (let i = 0; i < data.length; ++i) context += item(data[i])
 
-		context +=	`
-								</tbody>
-							</table>
-						</div>
-					</div>
-					`
+		context += `
+		                       </tbody>
+		                   </table>
+		               </div>
+		           </div>
+		           `
 
 		return context
 
@@ -93,7 +93,7 @@ window.basicContext = {
 		// We need to capture pageX and pageY from original event.
 
 		if ((e!=null && e.type==='touchend') &&
-			(e.pageX==null || e.pageY==null)) {
+		    (e.pageX==null || e.pageY==null)) {
 
 				var touches = e.changedTouches
 
@@ -113,35 +113,35 @@ window.basicContext = {
 		e = basicContext._normalizeEvent(e)
 
 		var browser = {
-			scrollTop:	document.body.scrollTop,
-			width:		window.innerWidth,
-			height:		window.innerHeight
+			scrollTop : document.body.scrollTop,
+			width     : window.innerWidth,
+			height    : window.innerHeight
 		}
 
 		var x = e.pageX,
-			y = e.pageY - browser.scrollTop
+		    y = e.pageY - browser.scrollTop
 
 		// Position unknown
-		if (x==null || x < 0) x = 0
-		if (y==null || y < 0) y = 0
+		if (x==null || x<0) x = 0
+		if (y==null || y<0) y = 0
 
 			// Get size of context
 		var context = {
-			width:	basicContext._dom().offsetWidth,
-			height:	basicContext._dom().offsetHeight
+			width  : basicContext._dom().offsetWidth,
+			height : basicContext._dom().offsetHeight
 		}
 
 		// Never leave the screen
-		if (x > browser.width)	x = browser.width
-		if (y > browser.height)	y = browser.height
+		if (x > browser.width)  x = browser.width
+		if (y > browser.height) y = browser.height
 
 		// Fix position based on context
-		if ((x + context.width) > browser.width)	x = x - ((x + context.width) - browser.width)
-		if ((y + context.height) > browser.height)	y = y - ((y + context.height) - browser.height)
+		if ((x + context.width) > browser.width)   x = x - ((x + context.width) - browser.width)
+		if ((y + context.height) > browser.height) y = y - ((y + context.height) - browser.height)
 
 		// Make context scrollable and start at the top of the browser
 		// when context is higher than the browser
-		if (context.height > browser.height) {
+		if (context.height>browser.height) {
 			y = 0
 			basicContext._dom().classList.add('basicContext--scrollable')
 		}
@@ -172,9 +172,9 @@ window.basicContext = {
 		var position = basicContext._getPosition(e)
 
 		// Set position
-		basicContext._dom().style.left		= `${ position.x }px`
-		basicContext._dom().style.top		= `${ position.y }px`
-		basicContext._dom().style.opacity	= 1
+		basicContext._dom().style.left    = `${ position.x }px`
+		basicContext._dom().style.top     = `${ position.y }px`
+		basicContext._dom().style.opacity = 1
 
 		// Close fn fallback
 		if (fnClose==null) fnClose = basicContext.close
@@ -199,8 +199,8 @@ window.basicContext = {
 
 		var elem = basicContext._dom()
 
-		if (elem==null||elem.length===0)	return false
-		else								return true
+		if (elem==null||elem.length===0) return false
+		else                             return true
 
 	},
 
