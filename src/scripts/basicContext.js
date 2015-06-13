@@ -122,8 +122,8 @@ window.basicContext = {
 		    y = e.pageY - browser.scrollTop
 
 		// Position unknown
-		if (x==null || x<0) x = 0
-		if (y==null || y<0) y = 0
+		if (x==null || x < 0) x = 0
+		if (y==null || y < 0) y = 0
 
 			// Get size of context
 		var context = {
@@ -141,7 +141,7 @@ window.basicContext = {
 
 		// Make context scrollable and start at the top of the browser
 		// when context is higher than the browser
-		if (context.height>browser.height) {
+		if (context.height > browser.height) {
 			y = 0
 			basicContext._dom().classList.add('basicContext--scrollable')
 		}
@@ -199,8 +199,8 @@ window.basicContext = {
 
 		var elem = basicContext._dom()
 
-		if (elem==null||elem.length===0) return false
-		else                             return true
+		if (elem==null || elem.length===0) return false
+		else                               return true
 
 	},
 
