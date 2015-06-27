@@ -87,15 +87,15 @@ const build = function(data) {
 
 const normalizeEvent = function(e) {
 
-	// The event 'touchend' does not return the touch position.
 	// We need to capture pageX and pageY from original event.
+	// when the event 'touchend' does not return the touch position
 
 	if ((e!=null && e.type==='touchend') &&
 	    (e.pageX==null || e.pageY==null)) {
 
 			var touches = e.changedTouches
 
-			if (touches.length>0) {
+			if (touches!=null&&touches.length>0) {
 				e.pageX = touches[0].pageX
 				e.pageY = touches[0].pageY
 			}
