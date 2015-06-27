@@ -49,13 +49,37 @@ Include the CSS file in the `head` and the JS file at the end of your `body`:
 Show a context-menu by using the following command:
 
 ```js
-var items = [
-	{ type: 'item', title: 'Add Sites', icon: 'ion-plus-round', fn: function() {} },
-	{ type: 'item', title: 'Reset Login', icon: 'ion-person', fn: function() {} },
-	{ type: 'item', title: 'Help', icon: 'ion-help-buoy', fn: function() {} },
-	{ type: 'separator' },
-	{ type: 'item', title: 'Logout', icon: 'ion-log-out', fn: function() {} }
-]
+document.querySelector('.btn').addEventListener('click', function(e) {
 
-basicContext.show(items, e)
+	var items = [
+		{ type: 'item', title: 'Add Sites', icon: 'ion-plus-round', fn: function() {} },
+		{ type: 'item', title: 'Reset Login', icon: 'ion-person', fn: function() {} },
+		{ type: 'item', title: 'Help', icon: 'ion-help-buoy', fn: function() {} },
+		{ type: 'separator' },
+		{ type: 'item', title: 'Logout', icon: 'ion-log-out', fn: function() {} }
+	]
+
+	basicContext.show(items, e)
+
+})
+```
+
+## How to use with jQuery
+
+basicContext doesn't work properly with the normalized jQuery [Event Object](http://api.jquery.com/category/events/event-object/), but you can easily bypass this issue using `e.originalEvent`:
+
+```js
+$('.btn').on('click', function(e) {
+
+	var items = [
+		{ type: 'item', title: 'Add Sites', icon: 'ion-plus-round', fn: function() {} },
+		{ type: 'item', title: 'Reset Login', icon: 'ion-person', fn: function() {} },
+		{ type: 'item', title: 'Help', icon: 'ion-help-buoy', fn: function() {} },
+		{ type: 'separator' },
+		{ type: 'item', title: 'Logout', icon: 'ion-log-out', fn: function() {} }
+	]
+
+	basicContext.show(items, e.originalEvent)
+
+})
 ```
