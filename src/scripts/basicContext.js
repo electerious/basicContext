@@ -85,43 +85,45 @@ const build = function(data) {
 
 }
 
-const normalizeEvent = function(e) {
+const getNormalizedEvent = function(e = {}) {
 
-	// We need to capture pageX and pageY from original event.
-	// when the event 'touchend' does not return the touch position
+	var pos = {
+		x: e.clientX,
+		y: e.clientY
+	}
 
-	if ((e!=null && e.type==='touchend') &&
-	    (e.pageX==null || e.pageY==null)) {
+	if (e.type==='touchend' && (pos.x==null || pos.y==null)) {
 
-			var touches = e.changedTouches
+		// We need to capture clientX and clientY from original event
+		// when the event 'touchend' does not return the touch position
 
-			if (touches!=null&&touches.length>0) {
-				e.pageX = touches[0].pageX
-				e.pageY = touches[0].pageY
-			}
+		let touches = e.changedTouches
+
+		if (touches!=null&&touches.length>0) {
+			pos.x = touches[0].clientX
+			pos.y = touches[0].clientY
+		}
 
 	}
 
-	return e
+	// Position unknown
+	if (pos.x==null || pos.x < 0) pos.x = 0
+	if (pos.y==null || pos.y < 0) pos.y = 0
+
+	return pos
 
 }
 
 const getPosition = function(e) {
 
-	e = normalizeEvent(e)
+	// Get the click position
+	var {x, y} = getNormalizedEvent(e)
 
+	// Get size of browser
 	var browser = {
-		scrollTop : document.body.scrollTop,
 		width     : window.innerWidth,
 		height    : window.innerHeight
 	}
-
-	var x = e.pageX,
-	    y = e.pageY - browser.scrollTop
-
-	// Position unknown
-	if (x==null || x < 0) x = 0
-	if (y==null || y < 0) y = 0
 
 	// Get size of context
 	var context = {
