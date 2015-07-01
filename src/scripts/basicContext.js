@@ -8,13 +8,19 @@ const dom = function(elem = '') {
 
 const valid = function(data = {}) {
 
-	if (data.class==null)    data.class   = ''
-	if (data.type==null)     data.type    = 'item'
-	if (data.visible!=false) data.visible = true
-	if (data.icon==null)     data.icon    = null
-	if (data.title==null)    data.title   = 'Undefined'
+	if (data.class==null)     data.class    = ''
+	if (data.type==null)      data.type     = 'item'
+	if (data.visible!==false) data.visible  = true
+	if (data.icon==null)      data.icon     = null
+	if (data.title==null)     data.title    = 'Undefined'
 
-	if (data.fn==null && data.type!== 'separator') {
+	// Add disabled class when item disabled
+	if (data.disabled!==true) data.disabled = false
+	if (data.disabled===true) data.class += ' basicContext__disabled'
+
+	// Item requires a function when
+	// it's not a separator and not disabled
+	if (data.fn==null && data.type!=='separator' && data.disabled===false) {
 
 		console.warn(`Missing fn for item '${ data.title }'`)
 		return false
@@ -60,7 +66,7 @@ const build = function(data) {
 		} else if (row.type==='separator') {
 
 			html = `
-			       <tr class='separator'></tr>
+			       <tr class='basicContext__separator'></tr>
 			       `
 
 		}
@@ -158,6 +164,7 @@ const bind = function(row) {
 
 	if (row.fn==null)        return false
 	if (row.visible===false) return false
+	if (row.disabled===true) return false
 
 	dom(`td[data-num='${ row.num }']`).onclick = row.fn
 
