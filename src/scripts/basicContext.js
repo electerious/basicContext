@@ -1,4 +1,4 @@
-var overflow = null
+let overflow = null
 
 const dom = function(elem = '') {
 
@@ -8,10 +8,11 @@ const dom = function(elem = '') {
 
 const valid = function(data = {}) {
 
-	if (data.class==null) data.class = ''
-	if (data.type==null)  data.type  = 'item'
-	if (data.icon==null)  data.icon  = null
-	if (data.title==null) data.title = 'Undefined'
+	if (data.class==null)    data.class   = ''
+	if (data.type==null)     data.type    = 'item'
+	if (data.visible!=false) data.visible = true
+	if (data.icon==null)     data.icon    = null
+	if (data.title==null)    data.title   = 'Undefined'
 
 	if (data.fn==null && data.type!== 'separator') {
 
@@ -26,17 +27,20 @@ const valid = function(data = {}) {
 
 const build = function(data) {
 
-	var num     = 0,
+	let num     = 0,
 	    context = '',
 	    item
 
 	item = function(row) {
 
-		var html = '',
+		let html = '',
 		    span = ''
 
 		// Parse and validate data
 		if (valid(row)===false) return ''
+
+		// Skip when invisible
+		if (row.visible===false) return ''
 
 		// Give item a unique number
 		row.num = num++
@@ -87,7 +91,7 @@ const build = function(data) {
 
 const getNormalizedEvent = function(e = {}) {
 
-	var pos = {
+	let pos = {
 		x: e.clientX,
 		y: e.clientY
 	}
@@ -117,16 +121,16 @@ const getNormalizedEvent = function(e = {}) {
 const getPosition = function(e) {
 
 	// Get the click position
-	var {x, y} = getNormalizedEvent(e)
+	let {x, y} = getNormalizedEvent(e)
 
 	// Get size of browser
-	var browser = {
+	let browser = {
 		width     : window.innerWidth,
 		height    : window.innerHeight
 	}
 
 	// Get size of context
-	var context = {
+	let context = {
 		width  : dom().offsetWidth,
 		height : dom().offsetHeight
 	}
@@ -152,14 +156,19 @@ const getPosition = function(e) {
 
 const bind = function(row) {
 
-	if (row.fn!=null) dom(`td[data-num='${ row.num }']`).onclick = row.fn
+	if (row.fn==null)        return false
+	if (row.visible===false) return false
+
+	dom(`td[data-num='${ row.num }']`).onclick = row.fn
+
+	return true
 
 }
 
 const show = function(data, e, fnClose, fnCallback) {
 
 	// Build context
-	var html = build(data)
+	let html = build(data)
 	document.body.insertAdjacentHTML('beforeend', html)
 
 	// Save current overflow and block scrolling of site
@@ -169,7 +178,7 @@ const show = function(data, e, fnClose, fnCallback) {
 	}
 
 	// Calculate position
-	var position = getPosition(e)
+	let position = getPosition(e)
 
 	// Set position
 	dom().style.left    = `${ position.x }px`
@@ -197,7 +206,7 @@ const show = function(data, e, fnClose, fnCallback) {
 
 const visible = function() {
 
-	var elem = dom()
+	let elem = dom()
 
 	if (elem==null || elem.length===0) return false
 	else                               return true
