@@ -53,11 +53,13 @@ Show a context-menu by using the following command:
 document.querySelector('.btn').addEventListener('click', function(e) {
 
 	var items = [
-		{ type: 'item', title: 'Add Sites', icon: 'ion-plus-round', fn: function() {} },
-		{ type: 'item', title: 'Reset Login', icon: 'ion-person', fn: function() {} },
-		{ type: 'item', title: 'Help', icon: 'ion-help-buoy', fn: function() {} },
+		{ type: 'item', title: 'Add Sites', icon: 'ion-plus-round', fn: clicked },
+		{ type: 'item', title: 'Reset Login', icon: 'ion-person', fn: clicked },
+		{ type: 'item', title: 'Help', icon: 'ion-help-buoy', fn: clicked },
+		{ type: 'item', title: 'Disabled', icon: 'ion-minus-circled', fn: clicked, disabled: true },
+		{ type: 'item', title: 'Invisible', icon: 'ion-eye-disabled', fn: clicked, visible: false },
 		{ type: 'separator' },
-		{ type: 'item', title: 'Logout', icon: 'ion-log-out', fn: function() {} }
+		{ type: 'item', title: 'Logout', icon: 'ion-log-out', fn: clicked }
 	]
 
 	basicContext.show(items, e)
@@ -73,11 +75,13 @@ basicContext doesn't work properly with the normalized jQuery [Event Object](htt
 $('.btn').on('click', function(e) {
 
 	var items = [
-		{ type: 'item', title: 'Add Sites', icon: 'ion-plus-round', fn: function() {} },
-		{ type: 'item', title: 'Reset Login', icon: 'ion-person', fn: function() {} },
-		{ type: 'item', title: 'Help', icon: 'ion-help-buoy', fn: function() {} },
+		{ type: 'item', title: 'Add Sites', icon: 'ion-plus-round', fn: clicked },
+		{ type: 'item', title: 'Reset Login', icon: 'ion-person', fn: clicked },
+		{ type: 'item', title: 'Help', icon: 'ion-help-buoy', fn: clicked },
+		{ type: 'item', title: 'Disabled', icon: 'ion-minus-circled', fn: clicked, disabled: true },
+		{ type: 'item', title: 'Invisible', icon: 'ion-eye-disabled', fn: clicked, visible: false },
 		{ type: 'separator' },
-		{ type: 'item', title: 'Logout', icon: 'ion-log-out', fn: function() {} }
+		{ type: 'item', title: 'Logout', icon: 'ion-log-out', fn: clicked }
 	]
 
 	basicContext.show(items, e.originalEvent)
