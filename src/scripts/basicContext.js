@@ -222,6 +222,8 @@ const visible = function() {
 
 const close = function() {
 
+	if (visible()===false) return false
+
 	dom().parentElement.remove()
 
 	// Reset overflow to its original value
