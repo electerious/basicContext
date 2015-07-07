@@ -16,7 +16,7 @@ const valid = function(data = {}) {
 
 	// Add disabled class when item disabled
 	if (data.disabled!==true) data.disabled = false
-	if (data.disabled===true) data.class += ' basicContext__disabled'
+	if (data.disabled===true) data.class += ' basicContext__item--disabled'
 
 	// Item requires a function when
 	// it's not a separator and not disabled
@@ -52,21 +52,21 @@ const build = function(data) {
 		row.num = num++
 
 		// Generate span/icon-element
-		if (row.icon!==null) span = `<span class='${ row.icon }'></span>`
+		if (row.icon!==null) span = `<span class='basicContext__icon ${ row.icon }'></span>`
 
 		// Generate item
 		if (row.type==='item') {
 
 			html = `
-			       <tr class='${ row.class }'>
-			           <td data-num='${ row.num }'>${ span }${ row.title }</td>
+			       <tr class='basicContext__item ${ row.class }'>
+			           <td class='basicContext__data' data-num='${ row.num }'>${ span }${ row.title }</td>
 			       </tr>
 			       `
 
 		} else if (row.type==='separator') {
 
 			html = `
-			       <tr class='basicContext__separator'></tr>
+			       <tr class='basicContext__item basicContext__item--separator'></tr>
 			       `
 
 		}

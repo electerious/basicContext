@@ -1,0 +1,44 @@
+/* Context ------------------------------------------------*/
+.basicContext {
+
+	padding: 6px;
+	background-color: #fff;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 0 1px rgba(0, 0, 0, .2);
+	border-radius: 3px;
+
+	/* Item ------------------------------------------------*/
+	&__item {
+		margin-bottom: 2px;
+
+		&--separator {
+			margin: 4px 0;
+			background-color: rgba(0, 0, 0, .1);
+		}
+
+		&--disabled {
+			opacity: .5;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&__data {
+		padding: 6px 8px;
+		color: #333;
+		border-radius: 2px;
+	}
+
+	&__item:not(.basicContext__item--disabled):hover &__data {
+		color: #fff;
+		background-color: $basicContext__color;
+	}
+
+	&__icon {
+		margin-right: 10px;
+		width: 12px;
+		text-align: center;
+	}
+
+}
