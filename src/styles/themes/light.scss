@@ -1,0 +1,45 @@
+// Vars -------------------------------------------------------------- //
+@import '../vars';
+
+// Light Theme ------------------------------------------------------- //
+.basicContext {
+
+	padding: 6px 0;
+	background-color: #fff;
+	box-shadow: 0 2px 15px rgba(0, 0, 0, .2), 0 0 0 1px #eee;
+	border-radius: 3px;
+
+	&__item {
+		margin-bottom: 2px;
+
+		&--separator {
+			margin: 4px 0;
+			background-color: #eee;
+		}
+
+		&--disabled {
+			opacity: .5;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&__data {
+		padding: 6px 14px;
+		color: #666;
+	}
+
+	&__item:not(.basicContext__item--disabled):hover &__data {
+		color: $basicContext__color;
+		background-color: rgba($basicContext__color, .1);
+	}
+
+	&__icon {
+		margin-right: 8px;
+		width: 12px;
+		text-align: center;
+	}
+
+}

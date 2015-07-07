@@ -1,4 +1,3 @@
-/* Context ------------------------------------------------*/
 .basicContext {
 
 	position: absolute;
@@ -11,7 +10,7 @@
 	box-sizing: border-box;
 	* { box-sizing: border-box; }
 
-	/* Item ------------------------------------------------*/
+	// Item -------------------------------------------------------------- //
 	&__item {
 		cursor: pointer;
 
@@ -38,7 +37,7 @@
 		display: inline-block;
 	}
 
-	/* Scrollable ------------------------------------------------*/
+	// Scrollable -------------------------------------------------------- //
 	&--scrollable {
 		height: 100%;
 		-webkit-overflow-scrolling: touch;
