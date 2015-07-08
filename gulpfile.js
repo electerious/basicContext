@@ -26,6 +26,7 @@ gulp.task('styles', function() {
 	gulp.src('./src/styles/themes/*.scss')
 	    .pipe(plugins.sass())
 	    .on('error', catchError)
+	    .pipe(plugins.rename(function(path) { path.basename += '.min' }))
 	    .pipe(plugins.autoprefixer('last 2 version', '> 1%'))
 	    .pipe(plugins.minifyCss())
 	    .pipe(gulp.dest('./dist/themes'))
