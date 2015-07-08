@@ -212,8 +212,9 @@ const show = function(data, e, fnClose, fnCallback) {
 	// Call callback when available
 	if (fnCallback!=null) fnCallback()
 
-	// Do not trigger default event
-	if (typeof e.preventDefault === 'function') e.preventDefault()
+	// Do not trigger default event or further propagation
+	if (typeof e.preventDefault === 'function')  e.preventDefault()
+	if (typeof e.stopPropagation === 'function') e.stopPropagation()
 
 	return true
 
