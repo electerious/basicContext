@@ -20,6 +20,7 @@ Easy-to-use context-menu for your website or web-app.
 - Works in all modern browsers
 - Written in Vanilla JS
 - CommonJS and AMD support
+- Layout and theme are separated CSS-files. This makes it easy to style our own context.
 - Stays within the viewport and never opens outside the visible screen-area ([Demo](http://codepen.io/electerious/pen/GJqrZN))
 - Scrollable, when the height of the context-menu is bigger than the height of the browser ([Demo](http://codepen.io/electerious/pen/aOZpZr))
 
@@ -37,13 +38,14 @@ We recommend to install basicContext using [Bower](http://bower.io/) or [npm](ht
 
 	bower install basicContext
 	npm install basiccontext
-	
+
 ## How to use
 
-Include the CSS file in the `head` and the JS file at the end of your `body`:
+Include the CSS-files in the `head` and the JS-file at the end of your `body`:
 
 ```html
 <link rel="stylesheet" href="dist/basicContext.min.css">
+<link rel="stylesheet" href="dist/themes/default.css">
 <script src="dist/basicContext.min.js"></script>
 ```
 
@@ -88,3 +90,12 @@ $('.btn').on('click', function(e) {
 
 })
 ```
+
+## Themes
+
+Layout and theme are separated CSS-files. This makes it easy to style your own context or to choose from the included themes.
+
+| Name | CSS-File | Demo |
+|:-----------|:------------|:------------|
+| Default theme | [CSS-File](dist/themes/default.css) | [Demo](demos/default.html) |
+| Light theme | [CSS-File](dist/themes/light.css) | [Demo](demos/lightTheme.html) |
