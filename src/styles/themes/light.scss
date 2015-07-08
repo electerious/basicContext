@@ -36,6 +36,11 @@
 		background-color: rgba($basicContext__color, .1);
 	}
 
+	&__item:not(.basicContext__item--disabled):active &__data {
+		color: darken($basicContext__color, 10%);
+		background-color: rgba($basicContext__color, .15);
+	}
+
 	&__icon {
 		margin-right: 8px;
 		width: 12px;

@@ -37,6 +37,10 @@
 		background-color: $basicContext__color;
 	}
 
+	&__item:not(.basicContext__item--disabled):active &__data {
+		background-color: darken($basicContext__color, 10%);
+	}
+
 	&__icon {
 		margin-right: 10px;
 		width: 12px;
