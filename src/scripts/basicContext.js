@@ -166,7 +166,8 @@ const bind = function(row) {
 	if (row.visible===false) return false
 	if (row.disabled===true) return false
 
-	dom(`td[data-num='${ row.num }']`).onclick = row.fn
+	dom(`td[data-num='${ row.num }']`).onclick       = row.fn
+	dom(`td[data-num='${ row.num }']`).oncontextmenu = row.fn
 
 	return true
 
@@ -187,16 +188,23 @@ const show = function(data, e, fnClose, fnCallback) {
 	// Calculate position
 	let position = getPosition(e)
 
+	// Cache the context
+	let context = dom()
+
 	// Set position
-	dom().style.left    = `${ position.x }px`
-	dom().style.top     = `${ position.y }px`
-	dom().style.opacity = 1
+	context.style.left    = `${ position.x }px`
+	context.style.top     = `${ position.y }px`
+	context.style.opacity = 1
 
 	// Close fn fallback
-	if (fnClose==null) fnClose = close
+	if (fnClose==null) fnClose = () => {
+		close()
+		return false
+	}
 
 	// Bind click on background
-	dom().parentElement.onclick = fnClose
+	context.parentElement.onclick       = fnClose
+	context.parentElement.oncontextmenu = fnClose
 
 	// Bind click on items
 	for (let i = 0; i < data.length; ++i) bind(data[i])
