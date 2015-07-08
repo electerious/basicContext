@@ -97,5 +97,6 @@ Layout and theme are separated CSS-files. This makes it easy to style your own c
 
 | Name | Preview | CSS-File | Demo |
 |:-----------|:------------|:------------|:------------|
-| Default theme | <img src="http://l.electerious.com/uploads/big/36cc8c250d72a11f92df380595260c37.png" width="257" /> | [CSS-File](dist/themes/default.min.css) | [Demo](demos/default.html) |
-| Light theme | <img src="http://l.electerious.com/uploads/big/f337c41832ac37cd49c3bd6898b85d5e.png" width="257" /> | [CSS-File](dist/themes/light.min.css) | [Demo](demos/lightTheme.html) |
+| Default theme | <img src="http://l.electerious.com/uploads/big/36cc8c250d72a11f92df380595260c37.png" width="257" /> | [CSS-File](dist/themes/default.min.css) | [Demo](demos/themes/default.html) |
+| Bright theme | <img src="http://l.electerious.com/uploads/big/f337c41832ac37cd49c3bd6898b85d5e.png" width="257" /> | [CSS-File](dist/themes/bright.min.css) | [Demo](demos/themes/bright.html) |
+| Dark theme | <img src="http://l.electerious.com/uploads/big/f0cc0ba23effc0443f367ca63dd1e72f.png" width="257" /> | [CSS-File](dist/themes/dark.min.css) | [Demo](demos/themes/dark.html) |
