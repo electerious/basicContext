@@ -45,7 +45,7 @@ Include the CSS-files in the `head` and the JS-file at the end of your `body`:
 
 ```html
 <link rel="stylesheet" href="dist/basicContext.min.css">
-<link rel="stylesheet" href="dist/themes/default.css">
+<link rel="stylesheet" href="dist/themes/default.min.css">
 <script src="dist/basicContext.min.js"></script>
 ```
 
@@ -97,5 +97,5 @@ Layout and theme are separated CSS-files. This makes it easy to style your own c
 
 | Name | CSS-File | Demo |
 |:-----------|:------------|:------------|
-| Default theme | [CSS-File](dist/themes/default.css) | [Demo](demos/default.html) |
-| Light theme | [CSS-File](dist/themes/light.css) | [Demo](demos/lightTheme.html) |
+| Default theme | [CSS-File](dist/themes/default.min.css) | [Demo](demos/default.html) |
+| Light theme | [CSS-File](dist/themes/light.min.css) | [Demo](demos/lightTheme.html) |
