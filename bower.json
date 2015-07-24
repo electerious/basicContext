@@ -2,7 +2,7 @@
   "name": "basicContext",
   "version": "3.3.0",
   "authors": [
-    "Tobias Reich <tobias.reich.ich@gmail.com>"
+    "Tobias Reich <tobias@electerious.com>"
   ],
   "description": "Easy-to-use context-menu for your website or webapp",
   "main": "dist/basicContext.min.js",
