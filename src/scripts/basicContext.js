@@ -233,7 +233,9 @@ const close = function() {
 
 	if (visible()===false) return false
 
-	dom().parentElement.remove()
+	let container = document.querySelector('.basicContextContainer')
+
+	container.parentElement.removeChild(container)
 
 	// Reset overflow to its original value
 	if (overflow!=null) {
