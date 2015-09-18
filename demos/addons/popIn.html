@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+
+	<meta charset="utf-8">
+	<title>basicContext Demo</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+	<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<link rel="stylesheet" href="../../dist/basicContext.min.css">
+	<link rel="stylesheet" href="../../dist/themes/default.min.css">
+	<link rel="stylesheet" href="../../dist/addons/popin.min.css">
+
+	<style>
+
+		html {
+			width: 100%;
+			height: 100%;
+		}
+
+		body {
+			min-height: 100%;
+			font-size: 14px;
+		}
+
+		a {
+			display: inline-block;
+			position: absolute;
+			margin: 5px;
+			padding: 6px 10px;
+			background: #4393e6;
+			color: #fff;
+			text-decoration: none;
+			border-radius: 3px;
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+		a.topleft {
+			top: 0;
+			left: 0;
+		}
+
+		a.topright {
+			top: 0;
+			right: 0;
+		}
+
+		a.bottomleft {
+			bottom: 0;
+			left: 0;
+		}
+
+		a.bottomright {
+			bottom: 0;
+			right: 0;
+		}
+
+		a.center {
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
+
+	</style>
+
+	<a href="#" class="topleft">Click me!</a>
+
+	<a href="#" class="topright">Click me!</a>
+
+	<a href="#" class="bottomleft">Click me!</a>
+
+	<a href="#" class="bottomright">Click me!</a>
+
+	<a href="#" class="center">Click me!</a>
+
+	<script src="../../dist/basicContext.min.js"></script>
+
+	<script>
+
+		var onClick = function(e) {
+
+			var clicked = function() { alert('Item clicked!') }
+
+			var items = [
+				{ type: 'item', title: 'Add Sites', icon: 'ion-plus-round', fn: clicked },
+				{ type: 'item', title: 'Reset Login', icon: 'ion-person', fn: clicked },
+				{ type: 'item', title: 'Help', icon: 'ion-help-buoy', fn: clicked },
+				{ type: 'item', title: 'Disabled', icon: 'ion-minus-circled', fn: clicked, disabled: true },
+				{ type: 'item', title: 'Invisible', icon: 'ion-eye-disabled', fn: clicked, visible: false },
+				{ type: 'separator' },
+				{ type: 'item', title: 'Logout', icon: 'ion-log-out', fn: clicked }
+			]
+
+			basicContext.show(items, e)
+
+		}
+
+		document.addEventListener('DOMContentLoaded', function() {
+
+			document.querySelector('a.topleft').addEventListener('click', onClick)
+			document.querySelector('a.topright').addEventListener('click', onClick)
+			document.querySelector('a.bottomleft').addEventListener('click', onClick)
+			document.querySelector('a.bottomright').addEventListener('click', onClick)
+
+			document.querySelector('a.center').addEventListener('click', onClick)
+
+		})
+
+	</script>
+
+</html>
