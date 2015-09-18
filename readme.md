@@ -50,6 +50,8 @@ We recommend to install basicContext using [Bower](http://bower.io/) or [npm](ht
 
 ```sh
 bower install basicContext
+```
+```sh
 npm install basiccontext
 ```
 
@@ -58,6 +60,8 @@ Include the CSS-files in the `head` and the JS-file at the end of your `body`:
 ```html
 <link rel="stylesheet" href="dist/basicContext.min.css">
 <link rel="stylesheet" href="dist/themes/default.min.css">
+```
+```html
 <script src="dist/basicContext.min.js"></script>
 ```
 
