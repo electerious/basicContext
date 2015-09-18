@@ -127,7 +127,11 @@ const getNormalizedEvent = function(e = {}) {
 const getPosition = function(e, elem) {
 
 	// Get the click position
-	let {x, y} = getNormalizedEvent(e)
+	let normalizedEvent = getNormalizedEvent(e)
+
+	// Set the initial position
+	let x = normalizedEvent.x,
+	    y = normalizedEvent.y
 
 	// Get size of browser
 	let browser = {
@@ -152,9 +156,9 @@ const getPosition = function(e, elem) {
 		elem.classList.add('basicContext--scrollable')
 	}
 
-	// Calculate the relative position of the mouse and context
-	let rx = getNormalizedEvent(e).x - x,
-	    ry = getNormalizedEvent(e).y - y
+	// Calculate the relative position of the mouse to the context
+	let rx = normalizedEvent.x - x,
+	    ry = normalizedEvent.y - y
 
 	return {x, y, rx, ry}
 
