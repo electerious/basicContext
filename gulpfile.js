@@ -31,6 +31,14 @@ gulp.task('styles', function() {
 	    .pipe(plugins.minifyCss())
 	    .pipe(gulp.dest('./dist/themes'))
 
+	gulp.src('./src/styles/addons/*.scss')
+	    .pipe(plugins.sass())
+	    .on('error', catchError)
+	    .pipe(plugins.rename(function(path) { path.basename += '.min' }))
+	    .pipe(plugins.autoprefixer('last 2 version', '> 1%'))
+	    .pipe(plugins.minifyCss())
+	    .pipe(gulp.dest('./dist/addons'))
+
 })
 
 gulp.task('scripts', function() {

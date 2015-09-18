@@ -124,7 +124,7 @@ const getNormalizedEvent = function(e = {}) {
 
 }
 
-const getPosition = function(e) {
+const getPosition = function(e, elem) {
 
 	// Get the click position
 	let {x, y} = getNormalizedEvent(e)
@@ -137,15 +137,11 @@ const getPosition = function(e) {
 
 	// Get size of context
 	let context = {
-		width  : dom().offsetWidth,
-		height : dom().offsetHeight
+		width  : elem.offsetWidth,
+		height : elem.offsetHeight
 	}
 
-	// Never leave the screen
-	if (x > browser.width)  x = browser.width
-	if (y > browser.height) y = browser.height
-
-	// Fix position based on context
+	// Fix position based on context and browser size
 	if ((x + context.width) > browser.width)   x = x - ((x + context.width) - browser.width)
 	if ((y + context.height) > browser.height) y = y - ((y + context.height) - browser.height)
 
@@ -153,10 +149,14 @@ const getPosition = function(e) {
 	// when context is higher than the browser
 	if (context.height > browser.height) {
 		y = 0
-		dom().classList.add('basicContext--scrollable')
+		elem.classList.add('basicContext--scrollable')
 	}
 
-	return {x, y}
+	// Calculate the relative position of the mouse and context
+	let rx = getNormalizedEvent(e).x - x,
+	    ry = getNormalizedEvent(e).y - y
+
+	return {x, y, rx, ry}
 
 }
 
@@ -185,16 +185,17 @@ const show = function(data, e, fnClose, fnCallback) {
 		document.body.style.overflow = 'hidden'
 	}
 
-	// Calculate position
-	let position = getPosition(e)
-
 	// Cache the context
 	let context = dom()
 
+	// Calculate position
+	let position = getPosition(e, context)
+
 	// Set position
-	context.style.left    = `${ position.x }px`
-	context.style.top     = `${ position.y }px`
-	context.style.opacity = 1
+	context.style.left            = `${ position.x }px`
+	context.style.top             = `${ position.y }px`
+	context.style.transformOrigin = `${ position.rx }px ${ position.ry }px`
+	context.style.opacity         = 1
 
 	// Close fn fallback
 	if (fnClose==null) fnClose = () => {
