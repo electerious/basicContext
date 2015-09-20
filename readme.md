@@ -81,13 +81,13 @@ Show a context-menu by using the following command:
 document.querySelector('.btn').addEventListener('click', function(e) {
 
 	let items = [
-		{ type: 'item', title: 'Add Sites', icon: 'ion-plus-round', fn: clicked },
-		{ type: 'item', title: 'Reset Login', icon: 'ion-person', fn: clicked },
-		{ type: 'item', title: 'Help', icon: 'ion-help-buoy', fn: clicked },
-		{ type: 'item', title: 'Disabled', icon: 'ion-minus-circled', fn: clicked, disabled: true },
-		{ type: 'item', title: 'Invisible', icon: 'ion-eye-disabled', fn: clicked, visible: false },
-		{ type: 'separator' },
-		{ type: 'item', title: 'Logout', icon: 'ion-log-out', fn: clicked }
+		{ title: 'Add Sites', icon: 'ion-plus-round', fn: clicked },
+		{ title: 'Reset Login', icon: 'ion-person', fn: clicked },
+		{ title: 'Help', icon: 'ion-help-buoy', fn: clicked },
+		{ title: 'Disabled', icon: 'ion-minus-circled', fn: clicked, disabled: true },
+		{ title: 'Invisible', icon: 'ion-eye-disabled', fn: clicked, visible: false },
+		{ },
+		{ title: 'Logout', icon: 'ion-log-out', fn: clicked }
 	]
 
 	basicContext.show(items, e)
@@ -103,13 +103,13 @@ basicContext doesn't work properly with the normalized jQuery [Event Object](htt
 $('.btn').on('click', function(e) {
 
 	let items = [
-		{ type: 'item', title: 'Add Sites', icon: 'ion-plus-round', fn: clicked },
-		{ type: 'item', title: 'Reset Login', icon: 'ion-person', fn: clicked },
-		{ type: 'item', title: 'Help', icon: 'ion-help-buoy', fn: clicked },
-		{ type: 'item', title: 'Disabled', icon: 'ion-minus-circled', fn: clicked, disabled: true },
-		{ type: 'item', title: 'Invisible', icon: 'ion-eye-disabled', fn: clicked, visible: false },
-		{ type: 'separator' },
-		{ type: 'item', title: 'Logout', icon: 'ion-log-out', fn: clicked }
+		{ title: 'Add Sites', icon: 'ion-plus-round', fn: clicked },
+		{ title: 'Reset Login', icon: 'ion-person', fn: clicked },
+		{ title: 'Help', icon: 'ion-help-buoy', fn: clicked },
+		{ title: 'Disabled', icon: 'ion-minus-circled', fn: clicked, disabled: true },
+		{ title: 'Invisible', icon: 'ion-eye-disabled', fn: clicked, visible: false },
+		{ },
+		{ title: 'Logout', icon: 'ion-log-out', fn: clicked }
 	]
 
 	basicContext.show(items, e.originalEvent)
@@ -128,6 +128,8 @@ Layout and theme are separated CSS-files. This makes it easy to style your own c
 | Dark theme | <img src="http://l.electerious.com/uploads/big/f0cc0ba23effc0443f367ca63dd1e72f.png" width="257" /> | [CSS-File](dist/themes/dark.min.css) | [Demo](demos/themes/dark.html) |
 
 ## Addons
+
+Include the following CSS-files to enhance the look and functionality of your contexts.
 
 | Name | Preview | CSS-File | Demo |
 |:-----------|:------------|:------------|:------------|
