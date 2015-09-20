@@ -135,8 +135,8 @@ const getPosition = function(e, elem) {
 
 	// Get size of browser
 	let browser = {
-		width     : window.innerWidth,
-		height    : window.innerHeight
+		width  : window.innerWidth,
+		height : window.innerHeight
 	}
 
 	// Get size of context
@@ -214,12 +214,12 @@ const show = function(data, e, fnClose, fnCallback) {
 	// Bind click on items
 	for (let i = 0; i < data.length; ++i) bind(data[i])
 
-	// Call callback when available
-	if (fnCallback!=null) fnCallback()
-
 	// Do not trigger default event or further propagation
 	if (typeof e.preventDefault === 'function')  e.preventDefault()
 	if (typeof e.stopPropagation === 'function') e.stopPropagation()
+
+	// Call callback when available
+	if (fnCallback!=null) fnCallback()
 
 	return true
 
