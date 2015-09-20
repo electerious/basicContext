@@ -77,8 +77,7 @@ const buildItem = function(item, num) {
 
 const build = function(items) {
 
-	let num  = 0,
-	    html = ''
+	let html = ''
 
 	html += `
 	        <div class='basicContextContainer'>
