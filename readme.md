@@ -133,5 +133,5 @@ Include the following CSS-files to enhance the look and functionality of your co
 
 | Name | Preview | CSS-File | Demo |
 |:-----------|:------------|:------------|:------------|
-| PopIn effect | <img src="http://l.electerious.com/uploads/big/c506f4fedb8a4df691d276d6abdb75f7.gif" width="257" /> | [CSS-File](dist/addons/popin.min.css) | [Demo](demos/addons/popin.html) |
-| FadeIn effect | <img src="http://l.electerious.com/uploads/big/1b98e17f1af051753a958c18953adbd5.gif" width="257" /> | [CSS-File](dist/addons/fadein.min.css) | [Demo](demos/addons/fadein.html) |
+| PopIn effect | <img src="http://l.electerious.com/uploads/big/c506f4fedb8a4df691d276d6abdb75f7.gif" width="257" /> | [CSS-File](dist/addons/popin.min.css) | [Demo](demos/addons/popIn.html) |
+| FadeIn effect | <img src="http://l.electerious.com/uploads/big/1b98e17f1af051753a958c18953adbd5.gif" width="257" /> | [CSS-File](dist/addons/fadein.min.css) | [Demo](demos/addons/fadeIn.html) |
