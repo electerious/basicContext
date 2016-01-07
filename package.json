@@ -19,14 +19,6 @@
     "type": "git",
     "url": "https://github.com/electerious/basicContext.git"
   },
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests",
-    "etc"
-  ],
   "devDependencies": {
     "@electerious/modulizer": "^1.0.1",
     "gulp": "^3.9.0",
