@@ -1,6 +1,5 @@
 {
   "name": "basicContext",
-  "version": "3.5.0",
   "authors": [
     "Tobias Reich <tobias@electerious.com>"
   ],
@@ -17,13 +16,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/electerious/basicContext.git"
-  },
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests",
-    "etc"
-  ]
+  }
 }
