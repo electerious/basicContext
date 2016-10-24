@@ -80,19 +80,17 @@ const build = function(items) {
 	let html = ''
 
 	html += `
-	        <div class='basicContextContainer'>
-	            <div class='basicContext'>
-	                <table>
-	                    <tbody>
+			<div class='basicContext'>
+	            <table>
+	                <tbody>
 	        `
 
 	items.forEach((item, i) => html += buildItem(item, i))
 
 	html += `
-	                    </tbody>
-	                </table>
-	            </div>
-	        </div>
+					</tbody>
+                </table>
+            </div>
 	        `
 
 	return html
@@ -237,13 +235,20 @@ const visible = function() {
 
 }
 
-const close = function() {
+const close = function(event) {
 
-	if (visible()===false) return false
+	let container = document.querySelector('.basicContext')
 
-	let container = document.querySelector('.basicContextContainer')
+	// Remove menu if clicking outside of it, or if clicking a menu item
+	if (container !== null) {
 
-	container.parentElement.removeChild(container)
+		let isClickInside = container.contains(event.target)
+		let isItemClick   = event.target.parentElement.classList['value'].indexOf('basicContext__item') > -1 ? true : false
+
+		if (!isClickInside || isItemClick) {
+			container.parentElement.removeChild(container)
+		}
+	}
 
 	// Reset overflow to its original value
 	if (overflow!=null) {
