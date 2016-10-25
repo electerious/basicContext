@@ -179,6 +179,9 @@ const bind = function(item = {}) {
 
 const show = function(items, e, fnClose, fnCallback) {
 
+	// Close any other open context menus
+	close()
+
 	// Build context
 	let html = build(items)
 
