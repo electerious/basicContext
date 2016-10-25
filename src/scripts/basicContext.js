@@ -227,20 +227,11 @@ const visible = function() {
 
 }
 
-const close = function(event) {
+const close = function() {
 
 	let container = document.querySelector('.basicContext')
 
-	// Remove menu if clicking outside of it, or if clicking a menu item
-	if (container !== null) {
-
-		let isClickInside = container.contains(event.target)
-		let isItemClick   = event.target.parentElement.classList['value'].indexOf('basicContext__item') > -1 ? true : false
-
-		if (!isClickInside || isItemClick) {
-			container.parentElement.removeChild(container)
-		}
-	}
+	if (container!==null) container.parentElement.removeChild(container)
 
 	return true
 
