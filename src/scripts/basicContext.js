@@ -1,5 +1,3 @@
-let overflow = null
-
 const ITEM      = 'item',
       SEPARATOR = 'separator'
 
@@ -187,12 +185,6 @@ const show = function(items, e, fnClose, fnCallback) {
 	// Add context to the body
 	document.body.insertAdjacentHTML('beforeend', html)
 
-	// Save current overflow and block scrolling of site
-	if (overflow==null) {
-		overflow = document.body.style.overflow
-		document.body.style.overflow = 'hidden'
-	}
-
 	// Cache the context
 	let context = dom()
 
@@ -208,7 +200,7 @@ const show = function(items, e, fnClose, fnCallback) {
 	// Close fn fallback
 	if (fnClose==null) fnClose = close
 
-	// Bind click on background
+	// Bind click on parent element
 	context.parentElement.onclick       = fnClose
 	context.parentElement.oncontextmenu = fnClose
 
@@ -248,12 +240,6 @@ const close = function(event) {
 		if (!isClickInside || isItemClick) {
 			container.parentElement.removeChild(container)
 		}
-	}
-
-	// Reset overflow to its original value
-	if (overflow!=null) {
-		document.body.style.overflow = overflow
-		overflow = null
 	}
 
 	return true
