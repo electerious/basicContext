@@ -2,6 +2,7 @@ var	name    = require('./package.json').moduleName,
     fs      = require('fs'),
     gulp    = require('gulp'),
     plugins = require('gulp-load-plugins')()
+    replace = require('gulp-replace')
 
 var head = fs.readFileSync('./node_modules/@electerious/modulizer/head.js', { encoding: 'utf8' }),
     foot = fs.readFileSync('./node_modules/@electerious/modulizer/foot.js', { encoding: 'utf8' })
@@ -49,6 +50,7 @@ gulp.task('scripts', function() {
 	    .pipe(plugins.babel())
 	    .on('error', catchError)
 	    .pipe(plugins.concat(name + '.min.js', { newLine: "\n" }))
+        .pipe(replace(/\\n\\t\\*t* +/g,''))
 	    .pipe(plugins.uglify())
 	    .on('error', catchError)
 	    .pipe(gulp.dest('./dist'))
