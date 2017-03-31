@@ -258,8 +258,14 @@ const close = function() {
 }
 
 const triggerEvent = function(name, data = {}) {
-    let e = new CustomEvent(name, {detail: data, bubbles: true})
-    target.dispatchEvent(e)
+    let e;
+    if (typeof document.CustomEvent === "function") {
+        e = new CustomEvent(name, {detail: data, bubbles: true});
+    } else {
+        e = document.createEvent("CustomEvent");
+        e.initCustomEvent(name, true, true, data);
+    }
+    return target.dispatchEvent(e);
 }
 
 return {
