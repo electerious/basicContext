@@ -19,7 +19,7 @@ const getScrollbarWidth = () => { // taken from twbs/bootstrap
 	return scrollbarWidth
 }
 
-scrollBarWidth = getScrollBarWidth();
+scrollBarWidth = getScrollbarWidth();
 
 const valid = function(item = {}) {
 
