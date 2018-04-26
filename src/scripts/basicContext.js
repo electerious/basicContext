@@ -1,4 +1,5 @@
-let overflow = null
+let overflow = null,
+    target = null
 
 const ITEM      = 'item',
       SEPARATOR = 'separator'
@@ -23,15 +24,6 @@ const valid = function(item = {}) {
 	// Add disabled class when item disabled
 	if (item.disabled!==true) item.disabled = false
 	if (item.disabled===true) item.class += ' basicContext__item--disabled'
-
-	// Item requires a function when
-	// it's not a separator and not disabled
-	if (item.fn==null && item.type!==SEPARATOR && item.disabled===false) {
-
-		console.warn(`Missing fn for item '${ item.title }'`)
-		return false
-
-	}
 
 	return true
 
@@ -168,20 +160,26 @@ const getPosition = function(e, context) {
 
 }
 
-const bind = function(item = {}) {
+const bind = function(item = {}, index) {
 
-	if (item.fn==null)        return false
 	if (item.visible===false) return false
 	if (item.disabled===true) return false
 
-	dom(`td[data-num='${ item.num }']`).onclick       = item.fn
-	dom(`td[data-num='${ item.num }']`).oncontextmenu = item.fn
+    let fn = function(e) {
+        if (typeof item.fn === 'function') item.fn(e)
+        triggerEvent('basicContext:click',{clickevent: e, item: item, i: index})
+    }
+
+	dom(`td[data-num='${ item.num }']`).onclick       = fn
+	dom(`td[data-num='${ item.num }']`).oncontextmenu = fn
 
 	return true
 
 }
 
 const show = function(items, e, fnClose, fnCallback) {
+    // Save target
+    target = e.target
 
 	// Build context
 	let html = build(items)
@@ -224,6 +222,8 @@ const show = function(items, e, fnClose, fnCallback) {
 	// Call callback when a function
 	if (typeof fnCallback === 'function') fnCallback()
 
+    triggerEvent('basicContext:show')
+
 	return true
 
 }
@@ -251,8 +251,21 @@ const close = function() {
 		overflow = null
 	}
 
+    triggerEvent('basicContext:close')
+
 	return true
 
+}
+
+const triggerEvent = function(name, data = {}) {
+    let e;
+    if (typeof document.CustomEvent === "function") {
+        e = new CustomEvent(name, {detail: data, bubbles: true});
+    } else {
+        e = document.createEvent("CustomEvent");
+        e.initCustomEvent(name, true, true, data);
+    }
+    return target.dispatchEvent(e);
 }
 
 return {
