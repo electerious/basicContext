@@ -1,5 +1,3 @@
-let overflow = null
-
 const ITEM      = 'item',
       SEPARATOR = 'separator'
 
@@ -80,19 +78,17 @@ const build = function(items) {
 	let html = ''
 
 	html += `
-	        <div class='basicContextContainer'>
-	            <div class='basicContext'>
-	                <table>
-	                    <tbody>
+			<div class='basicContext'>
+	            <table>
+	                <tbody>
 	        `
 
 	items.forEach((item, i) => html += buildItem(item, i))
 
 	html += `
-	                    </tbody>
-	                </table>
-	            </div>
-	        </div>
+					</tbody>
+                </table>
+            </div>
 	        `
 
 	return html
@@ -183,17 +179,14 @@ const bind = function(item = {}) {
 
 const show = function(items, e, fnClose, fnCallback) {
 
+	// Close any other open context menus
+	close()
+
 	// Build context
 	let html = build(items)
 
 	// Add context to the body
 	document.body.insertAdjacentHTML('beforeend', html)
-
-	// Save current overflow and block scrolling of site
-	if (overflow==null) {
-		overflow = document.body.style.overflow
-		document.body.style.overflow = 'hidden'
-	}
 
 	// Cache the context
 	let context = dom()
@@ -210,7 +203,7 @@ const show = function(items, e, fnClose, fnCallback) {
 	// Close fn fallback
 	if (fnClose==null) fnClose = close
 
-	// Bind click on background
+	// Bind click on parent element
 	context.parentElement.onclick       = fnClose
 	context.parentElement.oncontextmenu = fnClose
 
@@ -239,17 +232,9 @@ const visible = function() {
 
 const close = function() {
 
-	if (visible()===false) return false
+	let container = document.querySelector('.basicContext')
 
-	let container = document.querySelector('.basicContextContainer')
-
-	container.parentElement.removeChild(container)
-
-	// Reset overflow to its original value
-	if (overflow!=null) {
-		document.body.style.overflow = overflow
-		overflow = null
-	}
+	if (container!==null) container.parentElement.removeChild(container)
 
 	return true
 
