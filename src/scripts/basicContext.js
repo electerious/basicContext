@@ -1,4 +1,5 @@
-let overflow = null
+let originalBodyStyle = null
+let scrollBarWidth
 
 const ITEM      = 'item',
       SEPARATOR = 'separator'
@@ -8,6 +9,17 @@ const dom = function(elem = '') {
 	return document.querySelector('.basicContext ' + elem)
 
 }
+
+const getScrollbarWidth = () => { // taken from twbs/bootstrap
+	const scrollDiv = document.createElement('div')
+	scrollDiv.className = 'scrollbar-width-measure'
+	document.body.appendChild(scrollDiv)
+	const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
+	document.body.removeChild(scrollDiv)
+	return scrollbarWidth
+}
+
+scrollBarWidth = getScrollbarWidth();
 
 const valid = function(item = {}) {
 
@@ -189,10 +201,11 @@ const show = function(items, e, fnClose, fnCallback) {
 	// Add context to the body
 	document.body.insertAdjacentHTML('beforeend', html)
 
-	// Save current overflow and block scrolling of site
-	if (overflow==null) {
-		overflow = document.body.style.overflow
+	// Save current body style and block scrolling of site
+	if (!originalBodyStyle) {
+		originalBodyStyle = { overflow: document.body.style.overflow, paddingRight: document.body.style.paddingRight }
 		document.body.style.overflow = 'hidden'
+		document.body.style.paddingRight = scrollBarWidth + 'px'
 	}
 
 	// Cache the context
@@ -245,10 +258,11 @@ const close = function() {
 
 	container.parentElement.removeChild(container)
 
-	// Reset overflow to its original value
-	if (overflow!=null) {
-		document.body.style.overflow = overflow
-		overflow = null
+	// Reset original body style
+	if (originalBodyStyle) {
+		document.body.style.overflow = originalBodyStyle.overflow
+		document.body.style.paddingRight = originalBodyStyle.paddingRight
+		originalBodyStyle = null
 	}
 
 	return true
